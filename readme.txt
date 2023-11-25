@@ -1,3 +1,7 @@
+crete a new project python and paste the following code inside the folder
+
+
+
 Do pip install the libraries mentioned in requirements file
 
 Admin login is admin,admin
