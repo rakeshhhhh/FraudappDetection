@@ -1,0 +1,53 @@
+{% extends 'myapp/company_base.html' %}
+{% load static %}
+{% block title %}App List{% endblock %}
+{% block body %}
+<center>
+    <h2><font color="#366092"><br>App List</font></h2>
+<div class="container">
+    <form name="frm" role="form" action="" method="post">
+            {% csrf_token %}
+         <br><table class="table table-striped table-bordered">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Date/Time</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        {% for p in product_list %}
+        <tbody>
+             <tr class="info ">
+
+            <td>{{ p.id }}</td>
+           <td>{{ p.product_name }}</td>
+
+            {% for k,value in subcategory_list.items %}
+				{% if k == p.sub_category_master_id %}
+					<td>{{ value }}</td>
+				{% endif %}
+			{% endfor %}
+            <td>{{ p.product_descp }}</td>
+            <td>{{ p.product_price }}</td>
+            <td>{{ p.dt }}/{{ p.tm }}</td>
+            <td>
+                <a class="nav-link" href="../company_product_master_delete?id={{p.id}}">Delete</a>
+                <a class="nav-link" href="../company_product_pic_view?product_master_id={{p.id}}">Images</a>
+                <a class="nav-link" href="../company_product_review_view?product_master_id={{p.id}}">Reviews</a>
+                <a href="../static/myapp/media/{{ p.status }}" >Download</a>
+            </td>
+        </tr>
+             </tbody>
+        {% endfor %}
+        </table>
+        {{msg}}
+        <br/>
+        <a href="{% url 'company_product_master_add' %}">Add Product</a></h1>
+    </form>
+</div>
+</center>
+{% endblock %}

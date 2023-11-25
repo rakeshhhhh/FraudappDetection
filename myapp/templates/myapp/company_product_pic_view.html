@@ -1,0 +1,37 @@
+{% extends 'myapp/company_base.html' %}
+{% load static %}
+{% block title %}App Picture List{% endblock %}
+{% block body %}
+<center>
+    <h2><font color="#366092"><br>Picture List</font></h2>
+<div class="conatiner">
+    <form name="frm" role="form" action="" method="post">
+            {% csrf_token %}
+         <br><table class="table table-striped table-bordered">
+        <thead>
+             <tr>
+            <th>ID</th>
+            <th>Picture</th>
+            <th>Action</th>
+        </tr>
+             </thead>
+        {% for p in pic_list %}
+             <tbody>
+        <tr class="info ">
+            <td>{{ p.id }}</td>
+            <td><img src="../static/myapp/media/{{ p.pic_path }}" width="100" height="100"></td>
+            <td>
+                <a class="nav-link" href="../company_product_pic_delete?id={{p.id}}&product_master_id={{product_master_id}}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+        {% endfor %}
+        </table>
+        <input type="hidden"  name="product_master_id" value="{{product_master_id}}" >
+        {{msg}}
+        <br/>
+        <a href="../company_product_pic_add?product_master_id={{product_master_id}}">Add Picture</a></h1>
+    </form>
+</div>
+</center>
+{% endblock %}

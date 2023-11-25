@@ -1,0 +1,20 @@
+{% extends 'myapp/user_base.html' %}
+{% load static %}
+{% block title %}User App Search{% endblock %}
+{% block body %}
+<center>
+    <h2><font color="#366092"><br>User App Search</font></h2>
+    <div class="container">
+    <form name="frm"  role="form" action="{% url 'user_product_search' %}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="app_name"><br>App Name</label>
+                <input class="form-control" type="text" name="app_name" placeholder="app_name" id="app_name">
+            </div>
+               <br> <button type="submit" class="btn btn-info" id="bt" name="bt">Search</button>
+        <button type="reset" class="btn btn-info" id="rt" name="rt">Reset</button>
+        {{msg}}
+        </form>
+    </div>
+</center>
+{% endblock %}

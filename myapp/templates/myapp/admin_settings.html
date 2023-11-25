@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+{% load static %}
+<style>
+    ul#menu {
+        padding: 0
+    }
+
+    ul#menu li {
+        display: inline;
+    }
+
+    ul#menu li a {
+        background-color: #F4B400;
+        color: #DB4437;
+        padding: 5px 10px;
+        text-decoration: none;
+        font: 700 15px cursive;
+        border-radius: 4px 4px 0 0;
+    }
+
+    ul#menu li a:hover {
+        background-color: #DB4437;
+        color: #F4B400;
+        font: 700 18px fantasy;
+        border-radius: 4px 4px 0 0;
+    }
+</style>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Home</title>
+</head>
+<body>
+
+<center>
+    <h1 ><font color="#366092">Fake App Analyser</font></h1>
+    <ul id="menu">
+        <li><a href="{% url 'admin_settings' %}">Home</a></li>
+        <li><a href="{% url 'admin_category_master_view' %}">Category</a></li>
+        <li><a href="{% url 'admin_subcategory_master_view' %}">Sub Category</a></li>
+        <li><a href="{% url 'admin_data_set_view' %}">Data Set</a></li>
+        <li><a href="{% url 'admin_changepassword' %}">Change Password</a></li>
+        <li><a href="{% url 'admin_home' %}">Back</a></li>
+    </ul>
+
+    <h2><font color="#366092">Settings Home</font></h2>
+    <img src="{% static 'myapp/images/settings.png'%}" width="200" height="200">
+    <form name="frm" action="{% url 'admin_login' %}" method="post">
+            {% csrf_token %}
+    {{msg}}
+    </form>
+</center>
+</body>
+</html>

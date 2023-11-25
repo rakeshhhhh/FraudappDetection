@@ -1,0 +1,202 @@
+
+{% load static %}
+
+<html lang="en">
+
+<head>
+  <style>
+.pt {
+  text-align: center;
+  color: red;
+}
+</style>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Fraud App Detection</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'myapp/assets/img/favicon.png'%}" rel="icon">
+  <link href="{% static 'myapp/assets/img/apple-touch-icon.png'%}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'myapp/assets/vendor/aos/aos.css'%}" rel="stylesheet">
+  <link href="{% static 'myapp/assets/vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
+  <link href="{% static 'myapp/assets/vendor/bootstrap-icons/bootstrap-icons.css'%}" rel="stylesheet">
+  <link href="{% static 'myapp/assets/vendor/boxicons/css/boxicons.min.css'%}" rel="stylesheet">
+  <link href="{% static 'myapp/assets/vendor/glightbox/css/glightbox.min.css'%}" rel="stylesheet">
+  <link href="{% static 'myapp/assets/vendor/swiper/swiper-bundle.min.css'%}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'myapp/assets/css/style.css'%}" rel="stylesheet">
+  <!-- =======================================================
+  * Template Name: Bocor - v4.7.1
+  * Template URL: https://bootstrapmade.com/bocor-bootstrap-template-nice-animation/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <div class="logo">
+        <h1><a href="index.html">FRAUD APP DETECTION<span>.</span></a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      </div>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="{% url 'home'%}">Home</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'about'%}">About Us</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'contactus'%}">Contact Us</a></li>
+          <li class="dropdown"><a href="#"><span>Login</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="{% url 'admin_login'%}">Admin</a></li>
+              <li><a href="{% url 'company_login'%}">Developer</a></li>
+              <li><a href="{% url 'user_login'%}">User</a></li>
+            </ul>
+          </li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main">
+
+<center>
+    <h2><font color="#366092"><br><br><b>New User</b></font></h2>
+    <div class="container">
+	<form name="frm" role="form" action="{% url 'user_details_add' %}" method="post" >
+        {% csrf_token %}
+         <div class="form-group">
+			 <label for="fname"><br><b>Name</b></label>
+				<input class="form-control" type="text" id="fname" name="fname" placeholder="First name" required="required">
+            <br><input class="form-control" type="text"  name="lname" placeholder="Last name" required="required">
+		 </div>
+	     <div class="form-group">
+             <label><br><b>Gender :</b></label><br>
+			<div class="custom-control custom-radio custom-control-inline">
+  				<input type="radio" class="custom-control-input" id="gender1" name="gender" value="Male" required="required">
+  				<label class="custom-control-label" for="gender1">Male</label>
+			</div>
+			<div class="custom-control custom-radio custom-control-inline">
+  				<input type="radio" class="custom-control-input" id="gender2" name="gender" value="Female">
+  				<label class="custom-control-label" for="gender2">Female</label>
+			</div>
+		</div>
+		 <div class="form-group">
+             <label for="dob"><br><b>DOB</b></label>
+				<input class="form-control" type="date" id="dob" name="dob" placeholder="DOB" required="required">
+		 </div>
+	     <div class="form-group">
+			 <label for="addr"><br><b>Address</b></label>
+                <input class="form-control" type="text" id="addr" name="addr" placeholder="Street" ><br>
+                <input class="form-control" type="text"  name="pincode" placeholder="pincode" pattern="[0-9]+" minlength="6" maxlength="6" ><br>
+		 </div>
+	     <div class="form-group">
+			 <label for="contact"><br><b>Contact</b></label>
+			 <input class="form-control" type="text" id="contact" name="contact" pattern="[0-9]+" placeholder="Enter contact"  minlength="10" maxlength="10" required="required"></td>
+		 </div>
+	     <div class="form-group">
+			 <label for="email"><br><b>Email</b></label>
+			 <input class="form-control" type="email" id="email" name="email" pattern="[a-zA-Z0-9!#$%&amp;'*+\/=?^_`{|}~.-]+@[a-zA-Z0-9]+.com*" placeholder="Enter email id"  required="required"></td>
+		 </div>
+		<div class="form-group">
+			<label for="password"><br><b>Create Password</b></label>
+			<input class="form-control" type="password"  name="password" placeholder="Enter password" minlength="8" id="password" title="Must contain  at least 8 or more characters " required="required" >
+		</div>
+		<div id="message">
+             <p id="length" class="pt" >  *Password must contain minimum 8 characters</p>
+        </div>
+		<div class="form-group">
+            <label for="password"><br><b>Confirm Password</b></label>
+			<input class="form-control" type="text"  name="password1" placeholder="Re-enter password" minlength="8" id="password1" onblur="function1()" required="required" >
+		</div>
+        <br>
+	   <button type="submit" class="btn btn-info" id="bt" name="bt">Register</button>
+        <button type="reset" class="btn btn-info" id="rt" name="rt">Reset</button>
+        {{msg}}
+        <br>
+                <a href="{% url 'user_login' %}"><br>Already Registered? Login</a></h1>
+    </form>
+	</div>
+</center>
+
+<!--      SCRIPT -->
+      <script>
+         function function1() {
+  let x = document.forms["frm"]["password"].value;
+  let y = document.forms["frm"]["password1"].value;
+  if (x != y) {
+    alert("Password Not Matching!!!");
+    return false;
+  }
+}
+      </script>
+<!--   END   SCRIPT -->
+
+
+        </main><!-- End #main -->
+
+{% block body %}{% endblock %}
+
+<br><br><br>
+  <!-- ======= Footer ======= -->
+<footer id="footer">
+
+    <div class="footer-top">
+
+      <div class="container">
+
+        <div class="row  justify-content-center">
+          <div class="col-lg-6">
+            <h3>FraudAppDetection</h3>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container footer-bottom clearfix">
+      <div class="copyright">
+        &copy; Copyright <strong><span>App Safety</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/bocor-bootstrap-template-nice-animation/ -->
+        Designed by Rakesh Narayanan
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'myapp/assets/vendor/aos/aos.js'%}"></script>
+  <script src="{% static 'myapp/assets/vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+  <script src="{% static 'myapp/assets/vendor/glightbox/js/glightbox.min.js'%}"></script>
+  <script src="{% static 'myapp/assets/vendor/isotope-layout/isotope.pkgd.min.js'%}"></script>
+  <script src="{% static 'myapp/assets/vendor/swiper/swiper-bundle.min.js'%}"></script>
+  <script src="{% static 'myapp/assets/vendor/php-email-form/validate.js'%}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'myapp/assets/js/main.js'%}"></script>
+
+</body>
+
+</html>

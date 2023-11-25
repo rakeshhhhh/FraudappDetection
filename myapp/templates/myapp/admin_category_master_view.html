@@ -1,0 +1,35 @@
+{% extends 'myapp/admin_base.html' %}
+{% load static %}
+{% block title %}Category List{% endblock %}
+{% block body %}
+<center>
+    <h2><font color="#366092"><br>Category List</font></h2>
+<div class="container">
+    <form name="frm" role="form" action="" method="post">
+            {% csrf_token %}
+        <br>
+        <table class="table table-striped table-bordered">
+        <thead>
+             <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Action</th>
+        </tr>
+             </thead>
+        {% for c in category_list %}
+             <tbody>
+        <tr class="info ">
+            <td>{{ c.id }}</td>
+            <td>{{ c.category_name }}</td>
+            <td><a class="nav-link" href="../admin_category_master_delete?id={{c.id}}">Delete</a></td>
+        </tr>
+        </tbody>
+        {% endfor %}
+        </table>
+        <br/>
+        <a href="{% url 'admin_category_master_add' %}">Add Category</a></h1>
+    </form>
+    {{msg}}
+</div>
+</center>
+{% endblock %}

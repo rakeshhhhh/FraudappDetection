@@ -1,0 +1,11 @@
+{% extends 'myapp/company_base.html' %}
+{% load static %}
+{% block title %}Hello Company!!!{% endblock %}
+{% block body %}
+
+<center>
+    <h2><font color="#366092"><br>Welcome {{uname}}</font></h2>
+    <img src="{% static 'myapp/images/ec.png'%}" width="640" height="320">
+
+</center>
+{% endblock %}

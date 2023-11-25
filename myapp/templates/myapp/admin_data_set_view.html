@@ -1,0 +1,37 @@
+{% extends 'myapp/admin_base.html' %}
+{% load static %}
+{% block title %}Data List{% endblock %}
+{% block body %}
+<center>
+    <h2><font color="#366092"><br>Data List</font></h2>
+<div class="container">
+    <form name="frm" action="" method="post" role="form">
+            {% csrf_token %}
+         <br>
+        <table class="table table-striped table-bordered">
+        <thead>
+             <tr>
+            <th>ID</th>
+            <th>Sentiment</th>
+            <th>Data</th>
+            <th>Action</th>
+        </tr>
+             </thead>
+        {% for d in data_list %}
+             <tbody>
+        <tr class="info ">
+            <td>{{ d.id }}</td>
+            <td>{{ d.sentiment_type }}</td>
+            <td>{{ d.data_path }}</td>
+            <td><a class="nav-link" href="../admin_data_set_delete?id={{d.id}}">Delete</a></td>
+        </tr>
+        </tbody>
+        {% endfor %}
+        </table>
+        {{msg}}
+        <br/>
+        <button type="submit" ><a href="{% url 'admin_data_set_add' %}">ADD DATA SET</a></button>
+    </form>
+</div>
+</center>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'myapp/company_base.html' %}
+{% load static %}
+{% block title %}Add App{% endblock %}
+{% block body %}
+<center>
+    <h2><font color="#366092"><br>App Add</font></h2>
+<div class="container">
+    <form name="frm" role="form" action="{% url 'company_product_master_add' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+        <div class="form-group">
+            <label for="product_name"><br>Name</label>
+            <input class="form-control" type="text"  name="product_name" placeholder="app name" required="required" id="product_name">
+        </div>
+           <div class="form-group">
+               <label for="sub_category_master_id"><br>Category</label>
+                    <select class="form-control" id="sub_category_master_id"  name="sub_category_master_id">
+		            {% for  sc in subcategory_list%}
+		                <option value="{{sc.id}}">{{sc.sub_category_name}}</option>
+		            {% endfor %}
+		            </select>
+           </div>
+            <div class="form-group">
+                <label for="product_descp"><br>Description</label>
+                <input class="form-control" type="text"  name="product_descp" placeholder="description " required="required" id="product_descp">
+            </div>
+            <div class="form-group">
+                <label for="product_price"><br>Price</label>
+                <input type="text"  class="form-control" id="product_price" name="product_price" placeholder="100.0" required="required"></td>
+            </div>
+        <div class="form-group">
+            <label for="document"><br>Apk</label>
+            <input class="form-control" type="file" name="document" id="document">
+        </div>
+           <br><button type="submit" class="btn btn-info" id="bt" name="bt">Add</button>
+        <button type="reset" class="btn btn-info" id="rt" name="rt">Reset</button>
+        {{msg}}
+    </form>
+</div>
+</center>
+{% endblock %}
